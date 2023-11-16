@@ -4,8 +4,8 @@ Algoritmos Obrigatórios:
 
 | Algoritmo | Responsável | Concluído |
 |---|---|---|
-| <a href="./Algoritmos Obrigatórios/Busca em Profundidade">Busca em Profundidade</a> | Nínguem | :x: |
-| <a href="./Algoritmos Obrigatórios/Busca em Largura">Busca em Largura</a> | Nínguem | :x: |
+| <a href="./Algoritmos Obrigatórios/Busca em Profundidade">Busca em Profundidade</a> | <a href="https://github.com/pedrosiqueirapb">pedrosiqueirapb</a> | :x: |
+| <a href="./Algoritmos Obrigatórios/Busca em Largura">Busca em Largura</a> | <a href="https://github.com/pedrosiqueirapb">pedrosiqueirapb</a> | :x: |
 | <a href="./Algoritmos Obrigatórios/Algoritmo de Dijkstra">Algoritmo de Dijkstra</a> | <a href="https://github.com/gabriellaxdantas">gabriellaxdantas</a> | :x: |
 | <a href="./Algoritmos Obrigatórios/Algoritmo de Prim">Algoritmo de Prim</a> | <a href="https://github.com/PontesJ">PontesJ</a> | :white_check_mark: |
 | <a href="./Algoritmos Obrigatórios/Algoritmo de Fleury">Algoritmo de Fleury</a> | Nínguem | :x: |
