@@ -9,7 +9,7 @@ Algoritmos Obrigatórios:
 | <a href="./Algoritmos Obrigatórios/Algoritmo de Dijkstra">Algoritmo de Dijkstra</a> | <a href="https://github.com/gabriellaxdantas">gabriellaxdantas</a> | :x: |
 | <a href="./Algoritmos Obrigatórios/Algoritmo de Prim">Algoritmo de Prim</a> | <a href="https://github.com/PontesJ">PontesJ</a> | :white_check_mark: |
 | <a href="./Algoritmos Obrigatórios/Algoritmo de Fleury">Algoritmo de Fleury</a> | Nínguem | :x: |
-| <a href="./Algoritmos Obrigatórios/Algoritmo de Bellman Ford">Algoritmo de Bellman Ford</a> | <a href="https://github.com/gabriellaxdantas">gabriellaxdantas</a> | :x: |
+| <a href="./Algoritmos Obrigatórios/Algoritmo de Bellman Ford">Algoritmo de Bellman Ford</a> | <a href="https://github.com/gabriellaxdantas">gabriellaxdantas</a> | :white_check_mark: |
 | <a href="./Algoritmos Obrigatórios/Algoritmo de Welsh Powell">Algoritmo de Welsh Powell</a> | Nínguem | :x: |
 | <a href="./Algoritmos Obrigatórios/Ordenação Topológica">Ordenação Topológica</a> | Nínguem | :x: |
 
