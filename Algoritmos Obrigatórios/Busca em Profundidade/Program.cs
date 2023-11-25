@@ -22,7 +22,9 @@ public class BuscaEmProfundidade{
         {0,1,1,0}
     };
     // pilha que armazena os nós a serem visitados
-    Stack<int> nos_visitados = new Stack<int>();
+    public Stack<int> nos_visitados = new Stack<int>();
+    public int[] nos_removidos = new int[4];
+    public int aux;
     public int init = 0;
     public int end = 3;
 
@@ -35,22 +37,36 @@ public class BuscaEmProfundidade{
     }
 
     public void busca_em_profundidade(int no_atual, int no_final){
-        nos_visitados.Push(no_atual); // adiciona o nó visitado à pilha
-        Console.WriteLine($"O nó {no_atual} acabou de ser visitado.");
+        while(true){
+            if(!nos_visitados.Contains(no_atual)){ // se o nó atual não está na pilha
+                nos_visitados.Push(no_atual); // adiciona o nó à pilha
+                Console.WriteLine($"O nó {no_atual} acabou de ser visitado.");
+            }
 
-        if(no_atual == no_final){ // se o nó atual for o nó que está sendo procurado
-            Console.WriteLine($"O nó {no_final} foi encontrado!");
-        }
-        else{
-            // o nó do topo da filha é removido, pois não é o que está sendo buscado
-            nos_visitados.Pop();
-            Console.WriteLine($"O nó {no_atual} foi removido do topo da pilha.");
-            for(int i=0; i<=3; i++){
-                // se tiver uma aresta entre o nó atual e qualquer outro nó do grafo e esse não estiver na pilha
-                if(grafo_esparso[no_atual, i] > 0 && !nos_visitados.Contains(i)){
-                    busca_em_profundidade(i, no_final);
+            if(no_atual == no_final){ // se o nó atual for o nó que está sendo procurado
+                nos_visitados.Pop(); // remove o nó da pilha
+                Console.WriteLine($"O nó {no_final} foi encontrado!");
+                break; // termina a execução
+            }
+            else{
+                // a variável auxiliar armazena o nó do topo da pilha que não é o nó procurado
+                aux = nos_visitados.Peek();
+                // o nó do topo da filha é removido, pois não é o que está sendo buscado
+                nos_visitados.Pop();
+                // o nó é marcado no vetor que armazena os nós que já foram removidos e não é o nó procurado
+                nos_removidos[aux] = 1;
+                Console.WriteLine($"O nó {no_atual} foi removido do topo da pilha.");
 
+                for(int i=0; i<4; i++){
+                    // 1) se tiver uma aresta entre o nó atual e qualquer outro nó do grafo
+                    // 2) se esse nó não estiver na pilha
+                    // 3) se esse nó não ser um dos nós que foram removidos
+                    if(grafo_esparso[aux, i] == 1 && !nos_visitados.Contains(i) && nos_removidos[i] == 0){
+                        nos_visitados.Push(i); // adiciona o nó ao topo da pilha
+                        Console.WriteLine($"O nó {i} acabou de ser visitado.");
+                    }
                 }
+                no_atual = nos_visitados.Peek(); // o nó atual é o nó no topo da pilha
             }
         }
     }
