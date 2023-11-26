@@ -1,6 +1,6 @@
 public class BuscaEmLargura{
     // matriz de adjacência de um grafo esparso
-    public int[,] grafo_esparso = new int[4,4]{
+    public int[,] grafo_esparso = new int[7,7]{
         /*
         {0,1,1,1,1,0,0,0,0,0},
         {1,0,0,0,1,1,0,0,0,0},
@@ -13,14 +13,17 @@ public class BuscaEmLargura{
         {0,0,0,1,0,1,1,0,0,1},
         {0,0,0,0,0,0,1,1,1,0}
         */
-        {0,1,1,0},
-        {1,0,0,1},
-        {1,0,0,1},
-        {0,1,1,0}
+        {0,1,1,0,0,0,0},
+        {0,0,0,0,1,0,0},
+        {0,0,0,0,0,1,0},
+        {1,0,0,0,0,0,0},
+        {0,0,0,1,0,0,0},
+        {0,0,0,0,0,0,0},
+        {0,0,0,1,0,1,0}
     };
     // fila que armazena os nós a serem visitados
     public Queue<int> fila_execucao = new Queue<int>();
-    public int [] nos_visitados = new int[4];
+    public int [] nos_visitados = new int[7];
     public int inicio = 0;
     public int final = 3;
 
@@ -63,7 +66,7 @@ public class BuscaEmLargura{
                 nos_visitados[aux] = 1;
                 Console.WriteLine($"O nó {no_atual} foi visitado.");
 
-                for(int i=0; i<4; i++){
+                for(int i=0; i<7; i++){
                     // 1) se tiver uma aresta entre o nó atual e qualquer outro nó do grafo
                     // 2) se esse nó não estiver na fila
                     // 3) se esse nó não ser um dos nós que foram visitados
