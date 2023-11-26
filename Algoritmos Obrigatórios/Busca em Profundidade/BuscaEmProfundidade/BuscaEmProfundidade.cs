@@ -21,7 +21,7 @@ public class BuscaEmProfundidade{
     public void iniciar_execucao(){
         Console.WriteLine("Executando busca em profundidade para grafo esparso:");
         comecar_busca(grafo_esparso, inicio, final);
-        Console.WriteLine("Executando busca em profundidade para grafo denso:");
+        Console.WriteLine("\nExecutando busca em profundidade para grafo denso:");
         // comecar_busca(grafo_denso, inicio, final);
     }
 
