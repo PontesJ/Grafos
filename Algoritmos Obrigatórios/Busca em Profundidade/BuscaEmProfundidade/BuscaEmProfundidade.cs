@@ -19,9 +19,14 @@ public class BuscaEmProfundidade{
     public int final = 8;
 
     public void iniciar_execucao(){
+        Console.ForegroundColor = ConsoleColor.Green; // imprime uma mensagem colorida
         Console.WriteLine("Executando busca em profundidade para grafo esparso:");
+        Console.ResetColor(); // restaura a cor padrão
         comecar_busca(grafo_esparso, inicio, final);
+
+        Console.ForegroundColor = ConsoleColor.Magenta; // imprime uma mensagem colorida
         Console.WriteLine("\nExecutando busca em profundidade para grafo denso:");
+        Console.ResetColor(); // restaura a cor padrão
         // comecar_busca(grafo_denso, inicio, final);
     }
 
