@@ -25,9 +25,14 @@ public class BuscaEmLargura{
     public int final = 3;
 
     public void iniciar_execucao(){
-        Console.WriteLine("Executando busca em largura para grafo esparso:");
+        Console.ForegroundColor = ConsoleColor.Green; // imprime uma mensagem colorida
+        Console.WriteLine("Executando busca em largura para grafo esparso:\n");
+        Console.ResetColor(); // restaura a cor padrão
         comecar_busca(grafo_esparso, inicio, final);
+
+        Console.ForegroundColor = ConsoleColor.Magenta; // imprime uma mensagem colorida
         Console.WriteLine("\nExecutando busca em largura para grafo denso:");
+        Console.ResetColor(); // restaura a cor padrão
         // comecar_busca(grafo_denso, inicio, final);
     }
 
