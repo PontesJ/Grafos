@@ -44,7 +44,7 @@ public class BuscaEmLargura{
                 Console.WriteLine($"O nó {no_atual} foi adicionado à fila."); 
             }
 
-            if(no_atual == no_final){ // se o nó atual for o nó que está sendo procurado
+            if(no_atual == no_final){ // se o nó atual for o nó que está sendo buscado
                 fila_execucao.Dequeue(); // remove o nó da fila
                 Console.WriteLine($"O nó {no_final} foi encontrado!");
                 break;
