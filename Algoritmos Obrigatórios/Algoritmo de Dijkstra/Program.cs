@@ -101,6 +101,7 @@ class Dijkstra
     {
         int V = 10;
         Grafo grafoEsparso = CriaGrafo(V);
+        Grafo grafoDenso = CriaGrafo(V);
 
         // Cria as arestas com as 3 informações
         // 1: Vértice que está saindo X
@@ -111,13 +112,13 @@ class Dijkstra
         AddAresta(grafoEsparso, 0, 4, 20);
         AddAresta(grafoEsparso, 0, 5, 5);
         AddAresta(grafoEsparso, 0, 6, 15);
+        AddAresta(grafoEsparso, 0, 7, 10);
         AddAresta(grafoEsparso, 1, 2, 5);
         AddAresta(grafoEsparso, 2, 1, 15);
         AddAresta(grafoEsparso, 2, 3, 5);
         AddAresta(grafoEsparso, 3, 4, 10);
         AddAresta(grafoEsparso, 4, 5, 5);
         AddAresta(grafoEsparso, 6, 5, 10);
-        AddAresta(grafoEsparso, 7, 0, 5);
         AddAresta(grafoEsparso, 7, 1, 20);
         AddAresta(grafoEsparso, 7, 6, 5);
         AddAresta(grafoEsparso, 8, 1, 15);
@@ -126,8 +127,55 @@ class Dijkstra
         AddAresta(grafoEsparso, 9, 1, 5);
         AddAresta(grafoEsparso, 9, 2, 15);
 
+
+        AddAresta(grafoDenso, 0, 1, 10);
+        AddAresta(grafoDenso, 0, 2, 15);
+        AddAresta(grafoDenso, 0, 3, 20);
+        AddAresta(grafoDenso, 0, 4, 25);
+        AddAresta(grafoDenso, 1, 0, 5);
+        AddAresta(grafoDenso, 1, 2, 10);
+        AddAresta(grafoDenso, 1, 3, 15);
+        AddAresta(grafoDenso, 1, 4, 20);
+        AddAresta(grafoDenso, 2, 0, 25);
+        AddAresta(grafoDenso, 2, 1, 20);
+        AddAresta(grafoDenso, 2, 3, 10);
+        AddAresta(grafoDenso, 2, 4, 5);
+        AddAresta(grafoDenso, 3, 0, 15);
+        AddAresta(grafoDenso, 3, 1, 5);
+        AddAresta(grafoDenso, 3, 2, 25);
+        AddAresta(grafoDenso, 3, 4, 10);
+        AddAresta(grafoDenso, 4, 0, 20);
+        AddAresta(grafoDenso, 4, 1, 15);
+        AddAresta(grafoDenso, 4, 2, 5);
+        AddAresta(grafoDenso, 4, 3, 5);
+        AddAresta(grafoDenso, 5, 6, 10);
+        AddAresta(grafoDenso, 5, 7, 15);
+        AddAresta(grafoDenso, 5, 8, 20);
+        AddAresta(grafoDenso, 5, 9, 25);
+        AddAresta(grafoDenso, 6, 5, 5);
+        AddAresta(grafoDenso, 6, 7, 10);
+        AddAresta(grafoDenso, 6, 8, 15);
+        AddAresta(grafoDenso, 6, 9, 20);
+        AddAresta(grafoDenso, 7, 5, 25);
+        AddAresta(grafoDenso, 7, 6, 20);
+        AddAresta(grafoDenso, 7, 8, 10);
+        AddAresta(grafoDenso, 7, 9, 5);
+        AddAresta(grafoDenso, 8, 5, 15);
+        AddAresta(grafoDenso, 8, 6, 5);
+        AddAresta(grafoDenso, 8, 7, 25);
+        AddAresta(grafoDenso, 8, 9, 10);
+        AddAresta(grafoDenso, 9, 5, 5);
+        AddAresta(grafoDenso, 9, 6, 10);
+        AddAresta(grafoDenso, 9, 7, 15);
+        AddAresta(grafoDenso, 9, 8, 20);
+
+
+
         // Começa do vértice 0
         Console.WriteLine("Grafo Esparso saindo do vértice 0: ");
         AlgoritmoDijkstra(grafoEsparso, 0);
+
+        Console.WriteLine("Grafo Denso saindo do vértice 0: ");
+        AlgoritmoDijkstra(grafoDenso, 0);
     }
 }
