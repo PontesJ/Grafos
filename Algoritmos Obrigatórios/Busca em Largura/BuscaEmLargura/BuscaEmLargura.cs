@@ -12,6 +12,19 @@ public class BuscaEmLargura{
         {0,0,0,1,0,1,1,0,0,1},
         {0,0,0,0,0,0,1,1,1,0}
     };
+    // matriz de adjacência de um grafo denso
+    public int[,] grafo_denso = new int[10,10]{
+        {0,1,1,1,0,1,1,1,1,1},
+        {1,0,1,1,1,1,0,1,1,1},
+        {1,1,0,1,1,1,1,0,1,1},
+        {1,1,1,0,1,1,1,1,0,1},
+        {0,1,1,1,0,1,1,1,1,1},
+        {1,1,1,1,1,0,1,1,1,0},
+        {1,0,1,1,1,1,0,1,1,1},
+        {1,1,0,1,1,1,1,0,1,1},
+        {1,1,1,0,1,1,1,1,0,1},
+        {1,1,1,1,1,0,1,1,1,0}
+    };
     // fila que armazena os nós a serem visitados
     public Queue<int> fila_execucao = new Queue<int>();
     public int [] nos_visitados = new int[10];
@@ -27,7 +40,7 @@ public class BuscaEmLargura{
         Console.ForegroundColor = ConsoleColor.Magenta; // imprime uma mensagem colorida
         Console.WriteLine("\nExecutando busca em largura para grafo denso:");
         Console.ResetColor(); // restaura a cor padrão
-        // comecar_busca(grafo_denso, inicio, final);
+        comecar_busca(grafo_denso, inicio, final);
     }
 
     public void comecar_busca(int[,] grafo, int inicio, int fim){
