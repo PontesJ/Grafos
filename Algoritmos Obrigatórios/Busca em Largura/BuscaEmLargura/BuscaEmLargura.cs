@@ -12,6 +12,19 @@ public class BuscaEmLargura{
         {0,0,0,1,0,1,1,0,0,1},
         {0,0,0,0,0,0,1,1,1,0}
     };
+    // matriz de adjacência de um grafo denso
+    public int[,] grafo_denso = new int[10,10]{
+        {0,1,1,1,0,1,1,1,1,1},
+        {1,0,1,1,1,1,0,1,1,1},
+        {1,1,0,1,1,1,1,0,1,1},
+        {1,1,1,0,1,1,1,1,0,1},
+        {0,1,1,1,0,1,1,1,1,1},
+        {1,1,1,1,1,0,1,1,1,0},
+        {1,0,1,1,1,1,0,1,1,1},
+        {1,1,0,1,1,1,1,0,1,1},
+        {1,1,1,0,1,1,1,1,0,1},
+        {1,1,1,1,1,0,1,1,1,0}
+    };
     // fila que armazena os nós a serem visitados
     public Queue<int> fila_execucao = new Queue<int>();
     public int [] nos_visitados = new int[10];
@@ -20,14 +33,14 @@ public class BuscaEmLargura{
 
     public void iniciar_execucao(){
         Console.ForegroundColor = ConsoleColor.Green; // imprime uma mensagem colorida
-        Console.WriteLine("Executando busca em largura para grafo esparso:\n");
+        Console.WriteLine("Executando busca em largura para grafo esparso:");
         Console.ResetColor(); // restaura a cor padrão
         comecar_busca(grafo_esparso, inicio, final);
-
+        
         Console.ForegroundColor = ConsoleColor.Magenta; // imprime uma mensagem colorida
         Console.WriteLine("\nExecutando busca em largura para grafo denso:");
         Console.ResetColor(); // restaura a cor padrão
-        // comecar_busca(grafo_denso, inicio, final);
+        comecar_busca(grafo_denso, inicio, final);
     }
 
     public void comecar_busca(int[,] grafo, int inicio, int fim){
@@ -40,12 +53,14 @@ public class BuscaEmLargura{
         while(true){
             if(!fila_execucao.Contains(no_atual)){ // se o nó atual não está na fila
                 fila_execucao.Enqueue(no_atual); // adiciona o nó à fila
-                Console.WriteLine($"O nó {no_atual} foi adicionado à fila."); 
+                Console.WriteLine($"O nó {no_atual + 1} foi adicionado à fila.");
+                Console.ReadLine();
             }
 
             if(no_atual == no_final){ // se o nó atual for o nó que está sendo buscado
                 fila_execucao.Dequeue(); // remove o nó da fila
-                Console.WriteLine($"O nó {no_final} foi encontrado!");
+                Console.WriteLine($"O nó {no_final + 1} foi encontrado!");
+                Console.ReadLine();
                 break;
             }
             else{
@@ -55,7 +70,8 @@ public class BuscaEmLargura{
                 fila_execucao.Dequeue();
                 // o nó é marcado no vetor que armazena os nós que já foram marcados
                 nos_visitados[aux] = 1;
-                Console.WriteLine($"O nó {no_atual} foi visitado.");
+                Console.WriteLine($"O nó {no_atual + 1} foi visitado.");
+                Console.ReadLine();
 
                 for(int i=0; i<10; i++){
                     // 1) se tiver uma aresta entre o nó atual e qualquer outro nó do grafo
@@ -63,7 +79,8 @@ public class BuscaEmLargura{
                     // 3) se esse nó não ser um dos nós que foram visitados
                     if(grafo[aux, i] == 1 && !fila_execucao.Contains(i) && nos_visitados[i] == 0){
                         fila_execucao.Enqueue(i); // adiciona o nó no começo da fila
-                        Console.WriteLine($"O nó {i} foi adicionado à fila.");
+                        Console.WriteLine($"O nó {i + 1} foi adicionado à fila.");
+                        Console.ReadLine();
                     }
                 }
                 no_atual = fila_execucao.Peek(); // o nó atual é o nó no topo da fila
