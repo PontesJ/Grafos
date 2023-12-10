@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 
 class Dijkstra
@@ -38,31 +38,40 @@ class Dijkstra
     static void AddAresta(Grafo grafo, int raiz, int destino, int peso)
     {
         grafo.Array[raiz].Nodes.Add(NewAdjListaNode(destino, peso));
-        grafo.Array[destino].Nodes.Add(NewAdjListaNode(raiz, peso)); 
+        // Certifique-se de que não há arestas adicionadas para os vértices 8 e 9
+        if (raiz != 8 && raiz != 9)
+        {
+            grafo.Array[destino].Nodes.Add(NewAdjListaNode(raiz, peso));
+        }
     }
 
     static void PrintArray(int[] dist, int n)
     {
         Console.WriteLine("Distância do vértice da raiz");
         for (int i = 0; i < n; ++i)
-            Console.WriteLine($"{i}\t\t{dist[i]}");
+        {
+            if (dist[i] == int.MaxValue)
+            {
+                Console.WriteLine($"{i}\t\tCaminho inexistente");
+            }
+            else
+            {
+                Console.WriteLine($"{i}\t\t{dist[i]}");
+            }
+        }
     }
 
     static void AlgoritmoDijkstra(Grafo grafo, int raiz)
     {
         int V = grafo.V;
         int[] dist = new int[V];
-        var minHeap = new SortedSet<(int, int)>();
+        var minHeap = new SortedSet<(int, int)>(Comparer<(int, int)>.Create((a, b) => a.Item1.CompareTo(b.Item1)));
 
         for (int v = 0; v < V; ++v)
         {
-            dist[v] = int.MaxValue;
-            minHeap.Add((int.MaxValue, v));
+            dist[v] = (v == raiz) ? 0 : int.MaxValue;
+            minHeap.Add((dist[v], v));
         }
-
-        dist[raiz] = 0;
-        minHeap.Remove((int.MaxValue, raiz));
-        minHeap.Add((0, raiz));
 
         while (minHeap.Count != 0)
         {
@@ -82,8 +91,9 @@ class Dijkstra
                 }
             }
         }
-        //printa na tela o vertice e sua distancia 
-        //da raiz definida
+
+        // Printa na tela o vértice e sua distância 
+        // da raiz definida
         PrintArray(dist, V);
     }
 
@@ -91,10 +101,11 @@ class Dijkstra
     {
         int V = 10;
         Grafo grafoEsparso = CriaGrafo(V);
-        //cria as arestas com as 3 informaçoes
-        //1: vertice que está saindo X
-        //2: vertice que está chegando Y
-        //3: peso da aresta entre os vértices X e Y
+
+        // Cria as arestas com as 3 informações
+        // 1: Vértice que está saindo X
+        // 2: Vértice que está chegando Y
+        // 3: Peso da aresta entre os vértices X e Y
         AddAresta(grafoEsparso, 0, 1, 10);
         AddAresta(grafoEsparso, 0, 3, 20);
         AddAresta(grafoEsparso, 0, 4, 20);
@@ -115,8 +126,7 @@ class Dijkstra
         AddAresta(grafoEsparso, 9, 1, 5);
         AddAresta(grafoEsparso, 9, 2, 15);
 
-        
-        //começa do vertice 0
+        // Começa do vértice 0
         Console.WriteLine("Grafo Esparso saindo do vértice 0: ");
         AlgoritmoDijkstra(grafoEsparso, 0);
     }
