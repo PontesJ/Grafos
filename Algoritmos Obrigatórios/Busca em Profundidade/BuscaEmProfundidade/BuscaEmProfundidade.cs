@@ -32,11 +32,12 @@ public class BuscaEmProfundidade{
     public int final = 8;
 
     public void iniciar_execucao(){
+        
         Console.ForegroundColor = ConsoleColor.Green; // imprime uma mensagem colorida
         Console.WriteLine("Executando busca em profundidade para grafo esparso:");
         Console.ResetColor(); // restaura a cor padrão
         comecar_busca(grafo_esparso, inicio, final);
-
+        
         Console.ForegroundColor = ConsoleColor.Magenta; // imprime uma mensagem colorida
         Console.WriteLine("\nExecutando busca em profundidade para grafo denso:");
         Console.ResetColor(); // restaura a cor padrão
@@ -54,11 +55,13 @@ public class BuscaEmProfundidade{
             if(!pilha_execucao.Contains(no_atual)){ // se o nó atual não está na pilha
                 pilha_execucao.Push(no_atual); // adiciona o nó à pilha
                 Console.WriteLine($"O nó {no_atual + 1} foi adicionado à pilha.");
+                Console.ReadLine();
             }
 
             if(no_atual == no_final){ // se o nó atual for o nó que está sendo buscado
                 pilha_execucao.Pop(); // remove o nó da pilha
                 Console.WriteLine($"O nó {no_final + 1} foi encontrado!");
+                Console.ReadLine();
                 break; // termina a execução
             }
             else{
@@ -69,6 +72,7 @@ public class BuscaEmProfundidade{
                 // o nó é marcado no vetor que armazena os nós que já foram visitados
                 nos_visitados[aux] = 1;
                 Console.WriteLine($"O nó {no_atual + 1} foi visitado.");
+                Console.ReadLine();
 
                 for(int i=0; i<10; i++){
                     // 1) se tiver uma aresta entre o nó atual e qualquer outro nó do grafo
@@ -77,6 +81,7 @@ public class BuscaEmProfundidade{
                     if(grafo[aux, i] == 1 && !pilha_execucao.Contains(i) && nos_visitados[i] == 0){
                         pilha_execucao.Push(i); // adiciona o nó ao topo da pilha
                         Console.WriteLine($"O nó {i+1} foi adicionado à pilha.");
+                        Console.ReadLine();
     
                     }
                 }
