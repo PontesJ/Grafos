@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 
 class Dijkstra
@@ -89,23 +89,35 @@ class Dijkstra
 
     public static void Main(string[] args)
     {
-        int V = 6;
-        Grafo grafo = CriaGrafo(V);
+        int V = 10;
+        Grafo grafoEsparso = CriaGrafo(V);
         //cria as arestas com as 3 informaçoes
         //1: vertice que está saindo X
         //2: vertice que está chegando Y
         //3: peso da aresta entre os vértices X e Y
-        AddAresta(grafo, 0, 1, 5);
-        AddAresta(grafo, 0, 3, 1);
-        AddAresta(grafo, 1, 2, 6);
-        AddAresta(grafo, 2, 5, 1);
-        AddAresta(grafo, 3, 2, 1);
-        AddAresta(grafo, 3, 4, 8);
-        AddAresta(grafo, 4, 1, 2);
-        AddAresta(grafo, 4, 2, 5);
-        AddAresta(grafo, 5, 4, 1);
+        AddAresta(grafoEsparso, 0, 1, 10);
+        AddAresta(grafoEsparso, 0, 3, 20);
+        AddAresta(grafoEsparso, 0, 4, 20);
+        AddAresta(grafoEsparso, 0, 5, 5);
+        AddAresta(grafoEsparso, 0, 6, 15);
+        AddAresta(grafoEsparso, 1, 2, 5);
+        AddAresta(grafoEsparso, 2, 1, 15);
+        AddAresta(grafoEsparso, 2, 3, 5);
+        AddAresta(grafoEsparso, 3, 4, 10);
+        AddAresta(grafoEsparso, 4, 5, 5);
+        AddAresta(grafoEsparso, 6, 5, 10);
+        AddAresta(grafoEsparso, 7, 0, 5);
+        AddAresta(grafoEsparso, 7, 1, 20);
+        AddAresta(grafoEsparso, 7, 6, 5);
+        AddAresta(grafoEsparso, 8, 1, 15);
+        AddAresta(grafoEsparso, 8, 7, 20);
+        AddAresta(grafoEsparso, 8, 9, 10);
+        AddAresta(grafoEsparso, 9, 1, 5);
+        AddAresta(grafoEsparso, 9, 2, 15);
+
         
         //começa do vertice 0
-        AlgoritmoDijkstra(grafo, 0);
+        Console.WriteLine("Grafo Esparso saindo do vértice 0: ");
+        AlgoritmoDijkstra(grafoEsparso, 0);
     }
 }
