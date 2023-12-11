@@ -6,17 +6,25 @@ class Grafo
     int V;
     List<int>[] adj;
 
-    public Grafo(int V)
+    public Grafo(int[,] matrizAdjacencia)
     {
-        this.V = V;
+        V = matrizAdjacencia.GetLength(0);
         adj = new List<int>[V];
         for (int i = 0; i < V; i++)
+        {
             adj[i] = new List<int>();
-    }
-
-    public void AddAresta(int u, int v)
-    {
-        adj[u].Add(v);
+            for (int j = 0; j < V; j++)
+            {
+                if (matrizAdjacencia[i, j] == 1)
+                {
+                    adj[i].Add(j);
+                    Console.WriteLine($"Adicionando o nó {j + 1} à lista de adjacências do nó {i + 1}");
+                }
+                
+            }
+            Thread.Sleep(1000);
+            Console.WriteLine("");
+        }
     }
 
     public void OrdenacaoTopologica()
@@ -36,7 +44,9 @@ class Grafo
         for (int i = 0; i < V; i++)
         {
             if (grauEntrada[i] == 0)
+            {
                 q.Enqueue(i);
+            }
         }
 
         int cont = 0;
@@ -50,7 +60,9 @@ class Grafo
             foreach (int node in adj[u])
             {
                 if (--grauEntrada[node] == 0)
+                {
                     q.Enqueue(node);
+                }
             }
             cont++;
         }
@@ -64,7 +76,7 @@ class Grafo
         Console.WriteLine("Ordenação Topológica:");
         foreach (int i in ordRes)
         {
-            Console.Write(i + " ");
+            Console.Write((i + 1) + " ");
         }
     }
 }
@@ -73,16 +85,21 @@ class Program
 {
     static void Main()
     {
-        Grafo g = new Grafo(6);
-        g.AddAresta(0, 1);
-        g.AddAresta(0, 2);
-        g.AddAresta(1, 3);
-        g.AddAresta(2, 3);
-        g.AddAresta(2, 5);
-        g.AddAresta(3, 4);
-        g.AddAresta(3, 5);
+        int[,] matrizAdjacencia = new int[,]
+        {
+          { 0, 1, 1, 1, 1, 1, 0, 0, 0, 0 },
+          { 0, 0, 1, 1, 1, 1, 1, 0, 0, 0 },
+          { 0, 0, 0, 1, 1, 1, 1, 1, 0, 0 },
+          { 0, 0, 0, 0, 1, 1, 1, 1, 1, 0 },
+          { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1 },
+          { 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 },
+          { 0, 0, 0, 0, 0, 0, 0, 1, 1, 1 },
+          { 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 },
+          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+        };
 
-        
+        Grafo g = new Grafo(matrizAdjacencia);
         g.OrdenacaoTopologica();
     }
 }
